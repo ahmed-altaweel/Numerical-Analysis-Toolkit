@@ -8,7 +8,7 @@ from PySide6.QtWidgets import (
     QWidget,
 )
 
-CELL_SIZE = 34
+CELL_SIZE = 36
 
 
 class MatrixInput(QWidget):

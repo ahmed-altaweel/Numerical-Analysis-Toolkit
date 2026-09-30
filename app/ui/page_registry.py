@@ -8,6 +8,7 @@ from  ui.pages.finite_differences_page import FiniteDifferencesPage
 from  ui.pages.gaussian_page import GaussianPage
 from  ui.pages.jacobi_page import JacobiPage
 from  ui.pages.lagrange_page import LagrangePage
+from  ui.pages.matrix_inverse_page import MatrixInversePage
 from  ui.pages.newton_raphson_page import NewtonRaphsonPage
 from  ui.pages.secant_page import SecantPage
 from  ui.pages.trapezoidal_page import TrapezoidalPage
@@ -38,7 +39,7 @@ SECTIONS: tuple[Section, ...] = (
         "الاستيفاء (Interpolation)",
         (
             PageEntry("لاجرنج (Lagrange)", LagrangePage),
-            PageEntry("الفروق (Finite Differences)", FiniteDifferencesPage),
+            PageEntry("الفروق المنتهية (Finite Differences)", FiniteDifferencesPage),
         ),
     ),
     Section(
@@ -46,6 +47,7 @@ SECTIONS: tuple[Section, ...] = (
         (
             PageEntry("كرامر (Cramer)", CramerPage),
             PageEntry("الحذف الغاوسي (Gaussian)", GaussianPage),
+            PageEntry("معكوس المصفوفة (Matrix Inverse)", MatrixInversePage),
             PageEntry("جاكوبي (Jacobi)", JacobiPage),
         ),
     ),

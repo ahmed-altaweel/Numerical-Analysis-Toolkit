@@ -13,7 +13,7 @@ from  ui.widgets.app_button import AppButton
 
 
 DEFAULT_POINTS = [("1", "2"), ("2", "3"), ("3", "5"), ("4", "8")]
-CELL_SIZE = 34
+CELL_SIZE = 36
 MAX_VISIBLE_ROWS = 8
 MIN_ROWS = 2
 

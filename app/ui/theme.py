@@ -742,6 +742,48 @@ QPushButton#DangerButton:hover {{
 
 
 /* ═════════════════════════════════════════════════════════════
+   METHOD SELECTOR TOGGLE BUTTONS
+   ═════════════════════════════════════════════════════════════ */
+
+QPushButton#MethodButton {{
+    background: #FFFFFF;
+
+    color: {C_TEXT_SECONDARY};
+
+    border: 1px solid #CBD5E1;
+
+    padding: 8px 22px;
+
+    font-weight: 600;
+
+    border-radius: 7px;
+
+    min-width: 100px;
+}}
+
+QPushButton#MethodButton:hover {{
+    background: #EFF6FF;
+
+    color: {C_MID};
+
+    border-color: {C_MID};
+}}
+
+QPushButton#MethodButton:checked {{
+    background: {C_SIDEBAR_BG};
+
+    color: #FFFFFF;
+
+    border-color: {C_SIDEBAR_BG};
+
+    font-weight: bold;
+}}
+
+QPushButton#MethodButton:checked:hover {{
+    background: {C_SIDEBAR_BORDER};
+}}
+
+/* ═════════════════════════════════════════════════════════════
    STATUS MESSAGES
    ═════════════════════════════════════════════════════════════ */
 
@@ -815,7 +857,7 @@ QTableWidget {{
 }}
 
 QTableWidget::item {{
-    padding: 9px 14px;
+    padding: 2px 4px;
 
     border: none;
 
@@ -823,6 +865,7 @@ QTableWidget::item {{
 
     color: {C_TEXT_PRIMARY};
 }}
+
 
 QTableWidget::item:alternate {{
     background: #F0F5FF;
@@ -849,6 +892,35 @@ QTableWidget::item:selected:hover {{
 
     color: #FFFFFF;
 }}
+
+QTableWidget QLineEdit {{
+    border: 2px solid {C_MID};
+
+    border-radius: 4px;
+
+    padding: 0px 4px;
+
+    margin: 0px;
+
+    background: #FFFFFF;
+
+    color: {C_TEXT_PRIMARY};
+
+    selection-background-color: {C_MID};
+
+    selection-color: #FFFFFF;
+
+    font-size: 10pt;
+
+    font-family:
+        "Cascadia Code",
+        "Consolas",
+        "DejaVu Sans Mono",
+        monospace;
+
+    qproperty-alignment: 'AlignHCenter | AlignVCenter';
+}}
+
 
 QHeaderView {{
     border-radius: 0;

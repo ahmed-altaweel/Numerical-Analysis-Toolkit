@@ -2,11 +2,17 @@ from functools import wraps
 from typing import Callable
 
 from  algorithms.integration.trapezoidal import trapezoidal_rule
-from  algorithms.interpolation.finite_difference import finite_differences
+from  algorithms.interpolation.finite_difference import (
+    finite_differences,
+    newton_backward,
+    newton_central,
+    newton_forward,
+)
 from  algorithms.interpolation.lagrange import lagrange_interpolation
 from  algorithms.linear_systems.cramer import cramers_rule
 from  algorithms.linear_systems.gaussian import gaussian_elimination
 from  algorithms.linear_systems.jacobi import jacobi
+from  algorithms.linear_systems.matrix_inverse import matrix_inverse_solve
 from  algorithms.root_finding.bisection import bisection
 from  algorithms.root_finding.newton_raphson import newton_raphson
 from  algorithms.root_finding.secant import secant
@@ -104,6 +110,39 @@ def solve_finite_differences(rows: list[tuple[str, str]]) -> AlgorithmResult:
 
 
 @safe_run
+def solve_newton_forward(rows: list[tuple[str, str]], x_value: str) -> AlgorithmResult:
+    points = parse_points(rows)
+    target = parse_float(x_value, "X المطلوب")
+    ordered = sorted(points)
+    result = newton_forward(ordered, target)
+    if ordered != points:
+        result.warnings.append("تم ترتيب النقاط تصاعديًا حسب x قبل الحساب.")
+    return result
+
+
+@safe_run
+def solve_newton_backward(rows: list[tuple[str, str]], x_value: str) -> AlgorithmResult:
+    points = parse_points(rows)
+    target = parse_float(x_value, "X المطلوب")
+    ordered = sorted(points)
+    result = newton_backward(ordered, target)
+    if ordered != points:
+        result.warnings.append("تم ترتيب النقاط تصاعديًا حسب x قبل الحساب.")
+    return result
+
+
+@safe_run
+def solve_newton_central(rows: list[tuple[str, str]], x_value: str) -> AlgorithmResult:
+    points = parse_points(rows)
+    target = parse_float(x_value, "X المطلوب")
+    ordered = sorted(points)
+    result = newton_central(ordered, target)
+    if ordered != points:
+        result.warnings.append("تم ترتيب النقاط تصاعديًا حسب x قبل الحساب.")
+    return result
+
+
+@safe_run
 def solve_cramer(matrix_cells: list[list[str]], vector_cells: list[str]) -> AlgorithmResult:
     matrix = parse_matrix(matrix_cells)
     vector = parse_vector(vector_cells, "B")
@@ -117,6 +156,14 @@ def solve_gaussian(matrix_cells: list[list[str]], vector_cells: list[str]) -> Al
     vector = parse_vector(vector_cells, "B")
     require_linear_system(matrix, vector)
     return gaussian_elimination(matrix, vector)
+
+
+@safe_run
+def solve_matrix_inverse(matrix_cells: list[list[str]], vector_cells: list[str]) -> AlgorithmResult:
+    matrix = parse_matrix(matrix_cells)
+    vector = parse_vector(vector_cells, "B")
+    require_linear_system(matrix, vector)
+    return matrix_inverse_solve(matrix, vector)
 
 
 @safe_run
